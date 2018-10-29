@@ -23,7 +23,10 @@ namespace VanEppsProject3B
         private void btnCalculateRate_Click(object sender, EventArgs e)
         {
             // Convert input
-            int creditScore = Convert.ToInt32(txtCreditScore.Text);
+            int creditScore = Int32.Parse(txtCreditScore.Text, System.Globalization.NumberStyles.Number);
+
+            // Update input field with parsed value
+            txtCreditScore.Text = creditScore.ToString();
 
             // Determine interest rate based on credit score
             double interestRate = 0; // Initialize interest rate var

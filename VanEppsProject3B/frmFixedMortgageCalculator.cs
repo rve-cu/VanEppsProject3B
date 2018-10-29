@@ -22,9 +22,14 @@ namespace VanEppsProject3B
         private void btnCalculateMortgage_Click(object sender, EventArgs e)
         {
             // Convert input
-            int principalAmount = Convert.ToInt32(txtPrincipalAmount.Text);
-            int termLength = Convert.ToInt32(txtTermLength.Text);
-            double annualRate = Convert.ToDouble(txtAnnualRate.Text);
+            double principalAmount = Double.Parse(txtPrincipalAmount.Text, System.Globalization.NumberStyles.Currency);
+            int termLength = Int32.Parse(txtTermLength.Text, System.Globalization.NumberStyles.Number);
+            double annualRate = Double.Parse(txtAnnualRate.Text, System.Globalization.NumberStyles.Number);
+
+            // Update input fields with parsed values
+            txtPrincipalAmount.Text = principalAmount.ToString();
+            txtTermLength.Text = termLength.ToString();
+            txtAnnualRate.Text = annualRate.ToString();
 
             // Convert interest rate and term length to monthly amounts
             double monthlyRate = annualRate / 12 / 100; // Divide annualRate by 12 (months in year) then divide by 100 to get decimal rate value
